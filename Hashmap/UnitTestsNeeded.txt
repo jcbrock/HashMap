@@ -1,0 +1,17 @@
+BucketItems
+- Testing creation/initialization
+	- Functionality
+	- Bad input
+- Testing Lookup
+	- Functionality
+	- Bad input
+	- Items already created / not created, 0/1/multiple items
+	- Too many items for the bucket
+
+
+MyHashMap
+- End to end test
+- Bad input
+- Too many items for hash map
+
+Note: I'm just winging it atm, not reaaaally thinking about my interfaces and shit. I should write some tests first to flush that side out. To gtest!
