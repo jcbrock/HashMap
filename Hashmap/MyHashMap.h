@@ -37,7 +37,7 @@ public:
 
 
 private:
-	BucketItem buckets[100];
+	//BucketItem buckets[100];
 };
 
 

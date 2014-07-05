@@ -12,7 +12,7 @@ void MyHashMap::Insert(const char* key, const char* value, const unsigned int si
 {
 	unsigned int index = CrappyHashFunc(key, size);
 
-	BucketItem newItem;
+	//BucketItem newItem;
 	//newItem
 
 	//buckets[index];

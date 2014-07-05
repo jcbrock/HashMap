@@ -1,0 +1,85 @@
+//First off, how do I want to handle collisions?
+// Chaining 
+// - Performance degrades linarily as more items are added to the hash (i.e. there are more collisions)
+// Next slot (open addressing)
+// - Performance degrades dramatically when hash table gets around 70% full (i.e. there are lots of collisions, inserts getting placed all over the bucket list)
+// - Deletion can be a bitch, you have to shift elements so that future searches will work. For example, if three things hash to the same key and then get placed
+//	in sequential slots, and you delete the first one, you have to shift the previously collided items because otherwise future searches would see that slot open
+//	(since the item there was deleted) and assume there are no more items that wanted that slot
+// There are others, like 2-choice hashing (having two hashing functions): http://en.wikipedia.org/wiki/Hash_table but going to focus on chainging / open addressing
+
+// How do I know if this is my item? i.e. if I have multiple things mapped to a hash bucket, how do I know which one is the one I want?
+// - Oh, derp. You store the key/value pair as the "value", and then you can compare the search key too.
+// - looking up "jeff": "jeff" -> hash func -> index 123      buckets[123] value == {"jeff":"myvalue"}
+// - looking up "jeff" with previous collision (chained). HashBucketKeyValue is Key (a pointer), Value (key/value pair):
+//		"jeff" -> hash func -> index 123      buckets[123] value == (ptr to next item, {"bro":"myvalue"}). "bro" != "jeff", take pointer
+//		next item: (null, {"jeff":"mytruevalue"}), yay - found it!
+
+//NOTE: Although hash maps are usually used because of their speed, keep in mind that they may be slower than an inner loop for a sequential list or search tree.
+// i.e. Hash table data isn't stored continous, so you may spend quite a bit of time swapping memory around when accessing a bunch of items sequentially
+//  - this is called poor "locality of reference": http://en.wikipedia.org/wiki/Locality_of_reference
+
+//NOTE: Obviously like I've seen using unordered_mapIf the keys are not stored (because the hash function is collision-free), 
+// there may be no easy way to enumerate the keys that are present in the table at any given moment.//How do I want to do my bucket containers?
+//Options
+// - Dynamic Array
+// - LL
+// - 
+
+NOTE: Templated classes/functions have to be defined in the header where they are declared (or at least have their definition file included in the header). This
+is so the compiler sees the definitions and can create the apporiate versions of the class (like FooINT, FooDOUBLE, etc...). TODO: Read more about this.
+
+NOTE: Should I be using pointers all over the place, just because I want to be able to check for NULL? What are the cases I want to check for NULL..
+I guess to see if the data has been set yet. If that is the only reason, I could use some sort of init bool. Well, I still have to return some sort of NULL  value
+back to the user. 
+	- Ok, just tested unordered_map... it just returns some default value (not null or some bs) like 0, or "", or 0.0000. I'll do the same
+
+TODO: Read more about two's compliment, get more comfortable with it
+Can think of it like a wheel - http://pherricoxide.files.wordpress.com/2008/09/binary_circle2.jpg
+
+01111111 11111111 11111111 11111111 == max positive number (2147483648). 2^31 = 2147483648
+...
+00000000 00000000 00000000 00000000 == 0
+11111111 11111111 11111111 11111111 == -1
+11111111 11111111 11111111 11111110 == -2
+...
+10000000 00000000 00000000 00000000 == max negative number (-2147483648), any additional bits set will be added. -1 * 2^31 = -2147483648
+
+F0 00 00 00 = -2147483648
+4D CD CD CD = 1305333197
+-2147483648 + 1305333197 = -842150451 (CD CD CD CD)
+
+1.How do computers represent negative numbers?
+Take the positive value, invert all bits and add one.
+
+2.Why do computers represent negative numbers this way?
+It makes easy to add 7 in -7 and came up with a zero. The bit operations are fast.
+
+How does it make it easy?
+
+Take the 7 and -7 example. If you represent 7 as 00000111, to find -7 invert all bits and add one:
+
+11111000 -> 11111001
+Now you can add following standard math rules:
+
+  00000111
++ 11111001
+-----------
+  00000000
+For the computer this operation is relatively easy, as it involves basically comparing bit by bit and carrying one.
+
+If instead you represented -7 as 10000111, this won't make sense:
+
+  00000111
++ 10000111
+-----------
+  10001110 (-14)
+To add them, you will involve more complex rules like analyzing the first bit, and transforming the values.
+
+And don't forget what @trashgod said, in 2's complement you have only one zero. To check it:
+
+00000000
+11111111 (invert all bits)
+00000000 (add one)
+
+Differently from 00000000 (0) being equal to 10000000 (-0)

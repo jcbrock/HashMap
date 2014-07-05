@@ -78,7 +78,7 @@
     <ClInclude Include="MyHashMap.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Questions.txt" />
+    <Text Include="Notes.txt" />
     <Text Include="UnitTestsNeeded.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

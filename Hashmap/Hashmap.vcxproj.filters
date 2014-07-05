@@ -37,10 +37,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Questions.txt">
+    <Text Include="UnitTestsNeeded.txt">
       <Filter>Resource Files</Filter>
     </Text>
-    <Text Include="UnitTestsNeeded.txt">
+    <Text Include="Notes.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>

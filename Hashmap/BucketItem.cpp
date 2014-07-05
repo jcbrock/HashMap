@@ -1,6 +1,26 @@
-#include "BucketItem.h"
+/*#include "BucketItem.h"
 
-char* BucketItem::Lookup(const char* key) const
+template<typename T>
+bool BucketItem<T>::Initialize(const T key, const T value)
+{
+	if (items == NULL)
+	{
+		items = new KeyValuePair<T>();
+		items->key = key;
+		items->value = value;
+	}
+	else
+	{
+		items->key = key;
+		items->value = value;
+	}
+
+	return true;
+
+}
+
+template<typename T>
+T BucketItem<T>::Lookup(const T key) const
 {
 	for (int i = 0; i < kCollisionArraySize; ++i)
 	{
@@ -12,3 +32,12 @@ char* BucketItem::Lookup(const char* key) const
 
 	return "not found";
 }
+
+template<typename T>
+BucketItem<T>::~BucketItem()
+{
+	if (items != nullptr)
+	{
+		delete items;
+	}
+}*/
