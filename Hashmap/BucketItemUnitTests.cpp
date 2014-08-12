@@ -26,8 +26,9 @@
 	// </TechnicalDetails>
 //}
 
-// Tests factorial of negative numbers.
-TEST(FactorialTest, Negative) {
+//BucketItem
+
+/*TEST(FactorialTest, Negative) {
 	// This test is named "Negative", and belongs to the "FactorialTest"
 	// test case.
 
@@ -36,3 +37,5 @@ TEST(FactorialTest, Negative) {
 
 	EXPECT_EQ(NULL, item);
 }
+*/
+

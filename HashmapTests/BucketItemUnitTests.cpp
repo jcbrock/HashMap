@@ -27,7 +27,7 @@
 //}
 
 // Tests factorial of negative numbers.
-TEST(FactorialTest, Negative) {
+//TEST(FactorialTest, Negative) {
 	// This test is named "Negative", and belongs to the "FactorialTest"
 	// test case.
 
@@ -39,4 +39,4 @@ TEST(FactorialTest, Negative) {
 	//damnit  - in order to do this, I think my Hashmap project is going to have
 	//to output some .lib or .dll that I can use to test it (obviously).
 	//just keep tests in one project for now?
-}
+//}

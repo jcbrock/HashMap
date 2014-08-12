@@ -27,12 +27,18 @@
     <ClCompile Include="BucketItemUnitTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="UnitTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyHashMap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BucketItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HashMapItem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

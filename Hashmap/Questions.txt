@@ -2,3 +2,8 @@ First off, how do I want to handle collisions...
  - Chaining / Next slot / 
  - How do I know if this is my item? i.e. if I have multiple things mapped to a hash bucket, how do I know which one is the one I want?
 
+ How do I want to handle lookup misses? Return an empty pointer? How does std do it?
+  - I think they typically return the end iterator...
+  - yeah, that'd probably be the right thing to do... but overkill for now.
+
+
